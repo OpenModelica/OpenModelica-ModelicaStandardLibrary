@@ -2196,8 +2196,8 @@ package Examples
 
     // Use type declarations from the Medium
     Medium.MassFlowRate m_flow_ext;
-    Medium.DynamicViscosity eta=Medium.dynamicViscosity(medium);
-    Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium);
+    Medium.DynamicViscosity eta=Medium.dynamicViscosity(state);
+    Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(state);
   equation
     medium.p = 1.0e5;
     m = medium.d*V;
@@ -2496,7 +2496,6 @@ end MoistAir;
 <p> For details see the documentation of the example package TwoPhaseWater</p>
 </html>
 "));
-
     end TestTwoPhaseStates;
     annotation (Documentation(info="<html>
 <h4>Example: TwoPhaseWater</h4>
@@ -2508,11 +2507,11 @@ for the medium model. In this scenario, that builds a new medium model
 with many more properties than the default, the standard BaseProperties
 is used as a basis. For additional properties, a user has to:<br>
 <ol>
-<li>Declare a new variable of the wanted type, e.g. <span
+<li>Declare a new variable of the wanted type, e.g., <span
 style=\"color: rgb(0, 0, 153);\">\"<span style=\"color: rgb(51, 51, 255);\">DynamicViscosity
 eta</span>\"</span>.</li>
 <li>Compute that variable by calling the function form the package,
-e.g. <span style=\"color: rgb(51, 51, 255);\">eta =
+e.g., <span style=\"color: rgb(51, 51, 255);\">eta =
 dynamicViscosity(state)</span>. Note that the instance of
 ThermodynamicState is used as an input to the function. This instance
 \"state\" is declared in PartialMedium and thus available in every medium
@@ -2537,18 +2536,18 @@ derivatives like cv are computed with are different on both sides of
 the boundaries. The ususal steps to compute properties on the phase
 boundary are: <br>
 <ol>
-<li>Declare an instance of ThermodynamicState, e.g. \"ThermodynamicState&nbsp; dew\".</li>
+<li>Declare an instance of ThermodynamicState, e.g., \"ThermodynamicState&nbsp; dew\".</li>
 <li>Compute the state, using an instance of SaturationProperties,
-e.g. dew = setDewState(sat)</li>
+e.g., dew = setDewState(sat)</li>
 <li>Compute properties on the phase boundary to your full desire,
-e.g. \"cp_d = specificHeatCapacityCp(dew)\". <br>
+e.g., \"cp_d = specificHeatCapacityCp(dew)\". <br>
 </li>
 </ol>
 <p>The sample model TestTwoPhaseStates test the extended properties</p>
 
 <p>
 The same procedure can be used to compute properties at other state
-points, e.g. when an isentropic reference state is computed.
+points, e.g., when an isentropic reference state is computed.
 </p>
 </html>
 "));
@@ -2577,7 +2576,7 @@ points, e.g. when an isentropic reference state is computed.
       Medium.ThermalConductivity lambda= Medium.thermalConductivity(medium.state);
       Real beta = Medium.isobaricExpansionCoefficient(medium.state);
       Real gamma2 = Medium.isothermalCompressibility(medium2.state);
-      Medium.SpecificEnthalpy h_is = Medium.isentropicEnthalpyApproximation(2.0e5, medium);
+      Medium.SpecificEnthalpy h_is = Medium.isentropicEnthalpyApproximation(2.0e5, medium.state);
     equation
       der(medium.p) = 1000.0;
       der(medium.T) = 1000;
@@ -2615,7 +2614,7 @@ is given to compare the approximation.
       Medium.VelocityOfSound a=Medium.velocityOfSound(state);
       Real beta = Medium.isobaricExpansionCoefficient(state);
       Real gamma2 = Medium.isothermalCompressibility(medium2.state);
-      Medium.SpecificEnthalpy h_is = Medium.isentropicEnthalpyApproximation(2.0e5, medium2);
+      Medium.SpecificEnthalpy h_is = Medium.isentropicEnthalpyApproximation(2.0e5, medium2.state);
       parameter Medium.MolarMass[4] MMx = Medium.data.MM
         "Molar masses of flue gas";
       Medium.MolarMass MM =  1/sum(state.X[j]/MMx[j] for j in 1:4) "molar mass";
@@ -2667,11 +2666,11 @@ is given to compare the approximation.
       Real m(quantity=Medium.mediumName, start = 1.0);
       SI.InternalEnergy U;
 
-      Medium.SpecificHeatCapacity cp=Medium.specificHeatCapacityCp(medium);
-      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium);
-      Medium.IsentropicExponent gamma=Medium.isentropicExponent(medium);
-      Medium.SpecificEntropy s=Medium.specificEntropy(medium);
-      Medium.VelocityOfSound a=Medium.velocityOfSound(medium);
+      Medium.SpecificHeatCapacity cp=Medium.specificHeatCapacityCp(medium.state);
+      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium.state);
+      Medium.IsentropicExponent gamma=Medium.isentropicExponent(medium.state);
+      Medium.SpecificEntropy s=Medium.specificEntropy(medium.state);
+      Medium.VelocityOfSound a=Medium.velocityOfSound(medium.state);
     equation
 
       m = medium.d*V;
@@ -2693,18 +2692,18 @@ is given to compare the approximation.
       model TemplateMedium "Test Interfaces.TemplateMedium"
         extends Modelica.Icons.Example;
         package Medium = Interfaces.TemplateMedium "Medium model";
-        Medium.ThermodynamicState medium;
+        Medium.ThermodynamicState state;
 
-        Medium.DynamicViscosity eta=Medium.dynamicViscosity(medium);
-        Medium.ThermalConductivity lambda=Medium.thermalConductivity(medium);
-        Medium.SpecificEntropy s=Medium.specificEntropy(medium);
-        Medium.SpecificHeatCapacity cp=Medium.specificHeatCapacityCp(medium);
-        Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium);
-        Medium.IsentropicExponent gamma=Medium.isentropicExponent(medium);
-        Medium.VelocityOfSound a=Medium.velocityOfSound(medium);
+        Medium.DynamicViscosity eta=Medium.dynamicViscosity(state);
+        Medium.ThermalConductivity lambda=Medium.thermalConductivity(state);
+        Medium.SpecificEntropy s=Medium.specificEntropy(state);
+        Medium.SpecificHeatCapacity cp=Medium.specificHeatCapacityCp(state);
+        Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(state);
+        Medium.IsentropicExponent gamma=Medium.isentropicExponent(state);
+        Medium.VelocityOfSound a=Medium.velocityOfSound(state);
       equation
-        medium.p = 1.0e5;
-        medium.T = 300 + time/1000;
+        state.p = 1.0e5;
+        state.T = 300 + time/1000;
         annotation (Documentation(info="<html>
 
 </html>"));
@@ -2734,11 +2733,11 @@ is given to compare the approximation.
       Real m(quantity=Medium.mediumName, start = 1.0);
       SI.InternalEnergy U;
 
-      Medium.SpecificHeatCapacity cp=Medium.specificHeatCapacityCp(medium);
-      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium);
-      Medium.IsentropicExponent gamma=Medium.isentropicExponent(medium);
-      Medium.SpecificEntropy s=Medium.specificEntropy(medium);
-      Medium.VelocityOfSound a=Medium.velocityOfSound(medium);
+      Medium.SpecificHeatCapacity cp=Medium.specificHeatCapacityCp(medium.state);
+      Medium.SpecificHeatCapacity cv=Medium.specificHeatCapacityCv(medium.state);
+      Medium.IsentropicExponent gamma=Medium.isentropicExponent(medium.state);
+      Medium.SpecificEntropy s=Medium.specificEntropy(medium.state);
+      Medium.VelocityOfSound a=Medium.velocityOfSound(medium.state);
     equation
 
       m = medium.d*V;
@@ -3631,7 +3630,6 @@ output window.
 </p>
 
 </html>"));
-
    end Inverse_sine;
 
    model Inverse_sh_T
@@ -4107,7 +4105,7 @@ Modelica source.
       parameter Boolean preferredMediumStates=false
         "= true if StateSelect.prefer shall be used for the independent property variables of the medium"
         annotation (Evaluate=true, Dialog(tab="Advanced"));
-      parameter Boolean standardOrderComponents = true
+      replaceable parameter Boolean standardOrderComponents = true
         "if true, and reducedX = true, the last element of X will be computed from the other ones";
       SI.Conversions.NonSIunits.Temperature_degC T_degC=
           Modelica.SIunits.Conversions.to_degC(T)
@@ -5320,14 +5318,13 @@ partial package PartialMixtureMedium
         "Mass fractions (= (component mass)/total mass  m_i/m)";
     end ThermodynamicState;
 
-    redeclare replaceable record extends FluidConstants
-      "extended fluid constants"
+    redeclare record extends FluidConstants "extended fluid constants"
       Temperature criticalTemperature "critical temperature";
       AbsolutePressure criticalPressure "critical pressure";
       MolarVolume criticalMolarVolume "critical molar Volume";
       Real acentricFactor "Pitzer acentric factor";
-      Temperature triplePointTemperature "triple point temperature";
-      AbsolutePressure triplePointPressure "triple point pressure";
+    //   Temperature triplePointTemperature "triple point temperature";
+    //   AbsolutePressure triplePointPressure "triple point pressure";
       Temperature meltingPoint "melting point at 101325 Pa";
       Temperature normalBoilingPoint "normal boiling point (at 101325 Pa)";
       DipoleMoment dipoleMoment
@@ -5775,7 +5772,7 @@ end PartialMixtureMedium;
         extends Modelica.Icons.Function;
         input AbsolutePressure p "Pressure";
         input Temperature T "Temperature";
-        input MassFraction X[nX] "Mass fractions";
+        input MassFraction X[:] "Mass fractions";
         input FixedPhase phase=0
         "2 for two-phase, 1 for one-phase, 0 if not known";
         output SpecificEnthalpy h "Specific enthalpy at p, T, X";
@@ -5789,7 +5786,7 @@ end PartialMixtureMedium;
         extends Modelica.Icons.Function;
         input AbsolutePressure p "Pressure";
         input SpecificEnthalpy h "Specific enthalpy";
-        input MassFraction X[nX] "Mass fractions";
+        input MassFraction X[:] "Mass fractions";
         input FixedPhase phase=0
         "2 for two-phase, 1 for one-phase, 0 if not known";
         output Temperature T "Temperature";
@@ -5803,7 +5800,7 @@ end PartialMixtureMedium;
         extends Modelica.Icons.Function;
         input AbsolutePressure p "Pressure";
         input SpecificEnthalpy h "Specific enthalpy";
-        input MassFraction X[nX] "Mass fractions";
+        input MassFraction X[:] "Mass fractions";
         input FixedPhase phase=0
         "2 for two-phase, 1 for one-phase, 0 if not known";
         output Density d "density";
@@ -5817,7 +5814,7 @@ end PartialMixtureMedium;
         extends Modelica.Icons.Function;
         input AbsolutePressure p "Pressure";
         input SpecificEntropy s "Specific entropy";
-        input MassFraction X[nX] "Mass fractions";
+        input MassFraction X[:] "Mass fractions";
         input FixedPhase phase=0
         "2 for two-phase, 1 for one-phase, 0 if not known";
         output Temperature T "Temperature";
@@ -5831,7 +5828,7 @@ end PartialMixtureMedium;
         extends Modelica.Icons.Function;
         input AbsolutePressure p "Pressure";
         input SpecificEntropy s "Specific entropy";
-        input MassFraction X[nX] "Mass fractions";
+        input MassFraction X[:] "Mass fractions";
         input FixedPhase phase=0
         "2 for two-phase, 1 for one-phase, 0 if not known";
         output Density d "Density";
@@ -5845,7 +5842,7 @@ end PartialMixtureMedium;
         extends Modelica.Icons.Function;
         input AbsolutePressure p "Pressure";
         input SpecificEntropy s "Specific entropy";
-        input MassFraction X[nX] "Mass fractions";
+        input MassFraction X[:] "Mass fractions";
         input FixedPhase phase=0
         "2 for two-phase, 1 for one-phase, 0 if not known";
         output SpecificEnthalpy h "specific enthalpy";
@@ -6601,7 +6598,7 @@ quantities are assumed to be constant.
       extends Modelica.Icons.Function;
       input AbsolutePressure p "Pressure";
       input SpecificEnthalpy h "Specific enthalpy";
-      input MassFraction X[nX] "Mass fractions";
+      input MassFraction X[:] "Mass fractions";
       output Temperature T "Temperature";
     algorithm
       T := h/cp_const + T0;
@@ -6704,21 +6701,21 @@ package Common "data structures and fundamental functions for fluid properties"
 protected
   type Rate = Real (final quantity="Rate", final unit="s-1");
   type MolarFlowRate = Real (final quantity="MolarFlowRate", final unit="mol/s");
-  type MolarReactionRate = Real (final quantity="MolarReactionRate", final unit
-        ="mol/(m3.s)");
+  type MolarReactionRate = Real (final quantity="MolarReactionRate", final unit=
+         "mol/(m3.s)");
   type MolarEnthalpy = Real (final quantity="MolarEnthalpy", final unit="J/mol");
-  type DerDensityByEntropy = Real (final quantity="DerDensityByEntropy", final unit
-        =    "kg2.K/(m3.J)");
-  type DerEnergyByPressure = Real (final quantity="DerEnergyByPressure", final unit
-        =    "J/Pa");
+  type DerDensityByEntropy = Real (final quantity="DerDensityByEntropy", final unit=
+             "kg2.K/(m3.J)");
+  type DerEnergyByPressure = Real (final quantity="DerEnergyByPressure", final unit=
+             "J/Pa");
   type DerEnergyByMoles = Real (final quantity="DerEnergyByMoles", final unit=
           "J/mol");
   type DerEntropyByTemperature = Real (final quantity="DerEntropyByTemperature",
          final unit="J/K2");
   type DerEntropyByPressure = Real (final quantity="DerEntropyByPressure",
         final unit="J/(K.Pa)");
-  type DerEntropyByMoles = Real (final quantity="DerEntropyByMoles", final unit
-        ="J/(mol.K)");
+  type DerEntropyByMoles = Real (final quantity="DerEntropyByMoles", final unit=
+         "J/(mol.K)");
   type DerPressureByDensity = Real (final quantity="DerPressureByDensity",
         final unit="Pa.m3/kg");
   type DerPressureBySpecificVolume = Real (final quantity=
@@ -6727,8 +6724,8 @@ protected
           "DerPressureByTemperature", final unit="Pa/K");
   type DerVolumeByTemperature = Real (final quantity="DerVolumeByTemperature",
         final unit="m3/K");
-  type DerVolumeByPressure = Real (final quantity="DerVolumeByPressure", final unit
-        =    "m3/Pa");
+  type DerVolumeByPressure = Real (final quantity="DerVolumeByPressure", final unit=
+             "m3/Pa");
   type DerVolumeByMoles = Real (final quantity="DerVolumeByMoles", final unit=
           "m3/mol");
   type IsenthalpicExponent = Real (final quantity="IsenthalpicExponent", unit=

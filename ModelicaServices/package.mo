@@ -635,6 +635,56 @@ model Shape
     import Modelica.Mechanics.MultiBody.Frames;
     import Modelica.Mechanics.MultiBody.Types;
 
+      function PackShape
+        input Types.ShapeType shapeType;
+        output Real pack;
+      algorithm 
+      pack := if shapeType == "box" then 101 else
+            if shapeType == "sphere" then 102 else
+        if shapeType == "cylinder" then 103 else
+        if shapeType == "pipecylinder" then 110 else
+        if shapeType == "cone" then 104 else
+        if shapeType == "pipe" then 105 else
+        if shapeType == "beam" then 106 else
+        if shapeType == "gearwheel" then 108 else
+        if shapeType == "spring" then 111 else 1.2;
+        annotation(Inline=true);
+      end PackShape;
+
+      function PackMaterial
+    input Real c1;
+    input Real c2;
+    input Real c3;
+    input Real sc;
+    output Real m;
+    protected 
+    Real cc1;
+    Real cc2;
+    Real cc3;
+    Real cc4;
+    Real csc;
+    Real yc1;
+    Real yc2;
+    Real yc3;
+    Real ysc;
+    algorithm 
+    cc1 := if c1 > 1 then 1 else if c1 < 0.005 then 0.01 else c1;
+    yc1 :=integer(mod((cc1-0.005)*100,100))*100000;
+
+    cc2 := if c2 > 1 then 1 else if c2 < 0.005 then 0.01 else c2;
+    yc2 :=integer(mod((cc2-0.005)*100,100))*1000;
+
+    cc3 := if c3 > 1 then 1 else if c3 < 0.005 then 0.01 else c3;
+    yc3 :=integer(mod((cc3-0.005)*100,100))*10;
+
+    csc := if sc > 1 then 1 else if sc < 0.05 then 0.1 else sc;
+    ysc :=integer(mod((csc-0.05)*10,10));
+
+    m := yc1+yc2+yc3+ysc;
+    annotation(Inline=true);
+    end PackMaterial;  
+
+
   protected
   Real abs_n_x(final unit="1")=Modelica.Math.Vectors.length(
                              lengthDirection) annotation (HideResult=true);

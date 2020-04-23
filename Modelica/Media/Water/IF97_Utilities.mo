@@ -1776,7 +1776,7 @@ package IF97_Utilities
         g.p := p;
         g.T := T;
         g.R := data.RH2O;
-        assert(p > triple.ptriple,
+        assert(p > 0.0,
           "IF97 medium function g2 called with too low pressure\n" +
           "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
         assert(p <= 100.0e6,
@@ -2212,7 +2212,7 @@ package IF97_Utilities
       protected
         Real[11] o "vector of auxiliary variables";
       algorithm
-        assert(p > triple.ptriple,
+        assert(p > 0.0,
           "IF97 medium function g5 called with too low pressure\n" +
           "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
         assert(p <= data.PLIMIT5,
@@ -4923,7 +4923,7 @@ Ordinary Water Substance<br>
           "dimensionless Helmholtz function and dervatives wrt delta and tau";
         Modelica.Media.Common.NewtonDerivatives_ph nDerivs
           "derivatives needed in Newton iteration";
-        Boolean found "flag for iteration success";
+        Boolean found=false "flag for iteration success";
         Integer subregion "1 for subregion 3a, 2 for subregion 3b";
       algorithm
         if p < data.PCRIT then

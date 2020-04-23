@@ -3,7 +3,7 @@ package Water "Medium models for water"
 
 
 extends Modelica.Icons.Library;
-  constant Interfaces.PartialTwoPhaseMedium.FluidConstants[1] waterConstants(
+  constant Modelica.Media.Interfaces.PartialTwoPhaseMedium.FluidConstants[1] waterConstants(
      each chemicalFormula = "H2O",
      each structureFormula="H2O",
      each casRegistryNumber="7732-18-5",
@@ -20,7 +20,22 @@ extends Modelica.Icons.Library;
      each dipoleMoment = 1.8,
      each hasCriticalData=true);
 
-  constant Interfaces.PartialMedium.FluidConstants[1] simpleWaterConstants(
+  constant Modelica.Media.Interfaces.PartialMixtureMedium.FluidConstants[1] idealWaterConstants(
+     each chemicalFormula = "H2O",
+     each structureFormula="H2O",
+     each casRegistryNumber="7732-18-5",
+     each iupacName="oxidane",
+     each molarMass=0.018015268,
+     each criticalTemperature=647.096,
+     each criticalPressure=22064.0e3,
+     each criticalMolarVolume=1/322.0*0.018015268,
+     each normalBoilingPoint=373.124,
+     each meltingPoint=273.15,
+     each acentricFactor = 0.344,
+     each dipoleMoment = 1.8,
+     each hasCriticalData=true);
+
+  constant Modelica.Media.Interfaces.PartialMedium.FluidConstants[1] simpleWaterConstants(
      each chemicalFormula = "H2O",
      each structureFormula="H2O",
      each casRegistryNumber="7732-18-5",
@@ -65,7 +80,7 @@ end ConstantPropertyLiquidWater;
 
 package IdealSteam "Water: Steam as ideal gas from NASA source"
   extends IdealGases.SingleGases.H2O(
-  fluidConstants = waterConstants);
+  fluidConstants = idealWaterConstants);
   annotation (Documentation(info="<html>
 
 </html>"));
@@ -151,12 +166,11 @@ partial package WaterIF97_base
     h(stateSelect=if ph_explicit and preferredMediumStates then StateSelect.prefer else StateSelect.default),
     d(stateSelect=if dT_explicit and preferredMediumStates then StateSelect.prefer else StateSelect.default),
     T(stateSelect=if (pT_explicit or dT_explicit) and preferredMediumStates then StateSelect.prefer else StateSelect.default),
-    p(stateSelect=if (pT_explicit or ph_explicit) and preferredMediumStates then StateSelect.prefer else StateSelect.default))
+    p(stateSelect=if (pT_explicit or ph_explicit) and preferredMediumStates then StateSelect.prefer else StateSelect.default),
+    sat(Tsat(start = 300.0), psat(start=1.0e5)))
     "Base properties of water"
     Integer phase(min=0, max=2, start=1,fixed=false)
       "2 for two-phase, 1 for one-phase, 0 if not known";
-    SaturationProperties sat(Tsat(start=300.0), psat(start=1.0e5))
-      "saturation temperature and pressure";
   equation
     MM = fluidConstants[1].molarMass;
     if smoothModel then
