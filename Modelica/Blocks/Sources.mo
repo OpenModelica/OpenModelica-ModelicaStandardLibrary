@@ -2379,7 +2379,8 @@ If, e.g., time = 1.0, the output y =  0.0 (before event), 1.0 (after event)
       input Modelica.Blocks.Types.ExternalCombiTimeTable tableID;
       input Real timeIn;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(
+        __OpenModelica_UnusedVariable = true);
       output Real nextTimeEvent "Next time event in table";
       external"C" nextTimeEvent = ModelicaStandardTables_CombiTimeTable_nextTimeEvent(tableID, timeIn)
         annotation (Library={"ModelicaStandardTables", "ModelicaMatIO", "zlib"});
