@@ -21,7 +21,7 @@ package Constants
     "Smallest number such that small and -small are representable on the machine";
   constant Real inf=1.e+60
     "Biggest Real number such that inf and -inf are representable on the machine";
-  constant Integer Integer_inf=2147483647
+  constant Integer Integer_inf=OpenModelica.Internal.Architecture.integerMax()
     "Biggest Integer number such that Integer_inf and -Integer_inf are representable on the machine";
 
   // Constants of nature
