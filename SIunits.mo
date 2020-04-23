@@ -58,7 +58,7 @@ still kept in Modelica.SIunits.</p>
             style(color=0))));
     end NonSIunits;
     
-    function to_degC "Convert from Kelvin to 캜elsius" 
+    function to_degC "Convert from Kelvin to 째Celsius" 
       extends ConversionIcon;
       input Temperature Kelvin "Kelvin value";
       output NonSIunits.Temperature_degC Celsius "Celsius value";
@@ -68,19 +68,19 @@ still kept in Modelica.SIunits.</p>
             string="K"), Text(
             extent=[100, -20; 20, -100],
             style(color=0),
-            string="캜")));
+            string="째C")));
     algorithm 
       Celsius := Kelvin + Modelica.Constants.T_zero;
     end to_degC;
     
-    function from_degC "Convert from 캜elsius to Kelvin" 
+    function from_degC "Convert from 째Celsius to Kelvin" 
       extends ConversionIcon;
       input NonSIunits.Temperature_degC Celsius "Celsius value";
       output Temperature Kelvin "Kelvin value";
       annotation( Icon(Text(
             extent=[-20, 100; -100, 20],
             style(color=0),
-            string="캜"), Text(
+            string="째C"), Text(
             extent=[100, -20; 20, -100],
             style(color=0),
             string="K")));
@@ -88,7 +88,7 @@ still kept in Modelica.SIunits.</p>
       Kelvin := Celsius - Modelica.Constants.T_zero;
     end from_degC;
     
-    function to_degF "Convert from Kelvin to 캟ahrenheit" 
+    function to_degF "Convert from Kelvin to 째Fahrenheit" 
       extends ConversionIcon;
       input Temperature Kelvin "Kelvin value";
       output NonSIunits.Temperature_degF Fahrenheit "Fahrenheit value";
@@ -98,19 +98,19 @@ still kept in Modelica.SIunits.</p>
             string="K"), Text(
             extent=[100, -20; 20, -100],
             style(color=0),
-            string="캟")));
+            string="째F")));
     algorithm 
       Fahrenheit := (Kelvin + Modelica.Constants.T_zero)*(9/5) + 32;
     end to_degF;
     
-    function from_degF "Convert from 캟ahrenheit to Kelvin" 
+    function from_degF "Convert from 째Fahrenheit to Kelvin" 
       extends ConversionIcon;
       input NonSIunits.Temperature_degF Fahrenheit "Fahrenheit value";
       output Temperature Kelvin "Kelvin value";
       annotation( Icon(Text(
             extent=[-20, 100; -100, 20],
             style(color=0),
-            string="캟"), Text(
+            string="째F"), Text(
             extent=[100, -20; 20, -100],
             style(color=0),
             string="K")));
@@ -118,7 +118,7 @@ still kept in Modelica.SIunits.</p>
       Kelvin := (Fahrenheit - 32)*(5/9) - Modelica.Constants.T_zero;
     end from_degF;
     
-    function to_degRk "Convert from Kelvin to 캲ankine" 
+    function to_degRk "Convert from Kelvin to 째Rankine" 
       extends ConversionIcon;
       input Temperature Kelvin "Kelvin value";
       output NonSIunits.Temperature_degRk Rankine "Rankine value";
@@ -128,19 +128,19 @@ still kept in Modelica.SIunits.</p>
             string="K"), Text(
             extent=[100, -20; 20, -100],
             style(color=0),
-            string="캲k")));
+            string="째Rk")));
     algorithm 
       Rankine := (9/5)*Kelvin;
     end to_degRk;
     
-    function from_degRk "Convert from 캲ankine to Kelvin" 
+    function from_degRk "Convert from 째Rankine to Kelvin" 
       extends ConversionIcon;
       input NonSIunits.Temperature_degRk Rankine "Rankine value";
       output Temperature Kelvin "Kelvin value";
       annotation( Icon(Text(
             extent=[-20, 100; -100, 20],
             style(color=0),
-            string="캲k"), Text(
+            string="째Rk"), Text(
             extent=[100, -20; 20, -100],
             style(color=0),
             string="K")));
@@ -461,7 +461,7 @@ still kept in Modelica.SIunits.</p>
     annotation( Icon(
         Text(
           extent=[-33, -7; -92, -67],
-          string="캜",
+          string="째C",
           style(color=0, thickness=4)),
         Text(
           extent=[82, -7; 22, -67],

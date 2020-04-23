@@ -1403,7 +1403,7 @@ to port_b.
     
     extends Modelica.Icons.Library;
     
-    model ToKelvin "Conversion block from 캜elsius to Kelvin" 
+    model ToKelvin "Conversion block from 째Celsius to Kelvin" 
       parameter Integer n=1 "Number of inputs (= number of outputs)";
       annotation(
         Diagram(
@@ -1413,7 +1413,7 @@ to port_b.
               fillColor=7)),
           Text(
             extent=[-40, -50; -99, -99],
-            string="캜",
+            string="째C",
             style(color=0, thickness=4)),
           Text(
             extent=[100, -47; 44, -100],
@@ -1432,7 +1432,7 @@ to port_b.
             style(color=0)),
           Text(
             extent=[-31, -39; -111, -119],
-            string="캜",
+            string="째C",
             style(color=0, thickness=4)),
           Line(points=[-41, 0; -100, 0]),
           Line(points=[100, 0; 40, 0]),
@@ -1452,7 +1452,7 @@ and provides them as output signals.
       Kelvin.signal = from_degC(Celsius.signal);
     end ToKelvin;
     
-    model FromKelvin "Conversion from Kelvin to 캜elsius" 
+    model FromKelvin "Conversion from Kelvin to 째Celsius" 
       parameter Integer n=1 "Number of inputs (= number of outputs)";
       annotation(
         Icon(
@@ -1467,7 +1467,7 @@ and provides them as output signals.
             style(color=0, thickness=4)),
           Text(
             extent=[110, -39; 30, -119],
-            string="캜",
+            string="째C",
             style(color=0)),
           Line(points=[-40, 0; -100, 0]),
           Line(points=[40, 0; 100, 0])),
@@ -1482,7 +1482,7 @@ and provides them as output signals.
             style(color=0, thickness=4)),
           Text(
             extent=[100, -40; 30, -100],
-            string="캜",
+            string="째C",
             style(color=0)),
           Line(points=[-100, 0; -40, 0]),
           Line(points=[40, 0; 100, 0])),
@@ -1514,7 +1514,7 @@ and provides them as output signals.
               fillPattern=8)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캜",
+            string="째C",
             style(color=0)),
           Line(points=[-91, 0; 66, 0], style(color=42, thickness=2)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
@@ -1540,7 +1540,7 @@ i.e., it defines a fixed temperature as a boundary condition.
           Line(points=[-42, 0; 66, 0], style(color=42, thickness=2)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캜",
+            string="째C",
             style(color=0)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
               color=42,
@@ -1552,7 +1552,7 @@ i.e., it defines a fixed temperature as a boundary condition.
     end FixedTemperature;
     
     model PrescribedTemperature 
-      "Variable temperature boundary condition in 캜elsius" 
+      "Variable temperature boundary condition in 째Celsius" 
       
       annotation(
         Icon(
@@ -1568,7 +1568,7 @@ i.e., it defines a fixed temperature as a boundary condition.
               fillPattern=1)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캜",
+            string="째C",
             style(color=0)),
           Text(extent=[-122, 163; 118, 103], string="%name"),
           Line(points=[-102, 0; 64, 0], style(color=42, thickness=2)),
@@ -1594,7 +1594,7 @@ as required to keep the temperature at the specified value.
           Line(points=[-102, 0; 64, 0], style(color=42, thickness=2)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캜",
+            string="째C",
             style(color=0)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
               color=42,
@@ -1629,7 +1629,7 @@ Example:
 
 </HTML>
 "));
-    model TemperatureSensor "Absolute temperature sensor in 캜elsius" 
+    model TemperatureSensor "Absolute temperature sensor in 째Celsius" 
       
       annotation(
         Diagram(
@@ -1649,7 +1649,7 @@ Example:
           Line(points=[-40, 60; -12, 60], style(color=0)),
           Text(
             extent=[102, -22; 60, -74],
-            string="캜",
+            string="째C",
             style(color=0))),
         Icon(
           Ellipse(extent=[-20, -98; 20, -60], style(
@@ -1668,7 +1668,7 @@ Example:
           Line(points=[-40, 60; -12, 60], style(color=0)),
           Text(
             extent=[126, -20; 26, -120],
-            string="캜",
+            string="째C",
             style(color=0)),
           Text(extent=[-132, 144; 108, 84], string="%name")),
         Documentation(info="<HTML>
@@ -1696,7 +1696,7 @@ sensor model.
     
     extends Modelica.Icons.Library;
     
-    model ToKelvin "Conversion block from 캟ahrenheit to Kelvin" 
+    model ToKelvin "Conversion block from 째Fahrenheit to Kelvin" 
       parameter Integer n=1 "Number of inputs (= number of outputs)";
       annotation(
         Diagram(
@@ -1706,7 +1706,7 @@ sensor model.
               fillColor=7)),
           Text(
             extent=[-40, -50; -99, -99],
-            string="캟",
+            string="째F",
             style(color=0, thickness=4)),
           Text(
             extent=[100, -47; 44, -100],
@@ -1725,7 +1725,7 @@ sensor model.
             style(color=0)),
           Text(
             extent=[-31, -39; -111, -119],
-            string="캟",
+            string="째F",
             style(color=0, thickness=4)),
           Line(points=[-41, 0; -100, 0]),
           Line(points=[100, 0; 40, 0]),
@@ -1745,7 +1745,7 @@ and provides them as output signals.
       Kelvin.signal = from_degF(Fahrenheit.signal);
     end ToKelvin;
     
-    model FromKelvin "Conversion from Kelvin to 캟ahrenheit" 
+    model FromKelvin "Conversion from Kelvin to 째Fahrenheit" 
       parameter Integer n=1 "Number of inputs (= number of outputs)";
       annotation(
         Icon(
@@ -1760,7 +1760,7 @@ and provides them as output signals.
             style(color=0, thickness=4)),
           Text(
             extent=[110, -39; 30, -119],
-            string="캟",
+            string="째F",
             style(color=0)),
           Line(points=[-40, 0; -100, 0]),
           Line(points=[40, 0; 100, 0])),
@@ -1775,7 +1775,7 @@ and provides them as output signals.
             style(color=0, thickness=4)),
           Text(
             extent=[100, -40; 30, -100],
-            string="캟",
+            string="째F",
             style(color=0)),
           Line(points=[-100, 0; -40, 0]),
           Line(points=[40, 0; 100, 0])),
@@ -1795,7 +1795,7 @@ and provides them as output signals.
     end FromKelvin;
     
     model FixedTemperature 
-      "Fixed temperature boundary condition in 캟ahrenheit" 
+      "Fixed temperature boundary condition in 째Fahrenheit" 
       parameter NonSI.Temperature_degF T "Fixed Temperature at the port";
       annotation(
         Icon(
@@ -1807,7 +1807,7 @@ and provides them as output signals.
               fillPattern=8)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캟",
+            string="째F",
             style(color=0)),
           Line(points=[-91, 0; 66, 0], style(color=42, thickness=2)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
@@ -1833,7 +1833,7 @@ i.e., it defines a fixed temperature as a boundary condition.
           Line(points=[-42, 0; 66, 0], style(color=42, thickness=2)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캟",
+            string="째F",
             style(color=0)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
               color=42,
@@ -1845,7 +1845,7 @@ i.e., it defines a fixed temperature as a boundary condition.
     end FixedTemperature;
     
     model PrescribedTemperature 
-      "Variable temperature boundary condition in 캟ahrenheit" 
+      "Variable temperature boundary condition in 째Fahrenheit" 
       
       annotation(
         Icon(
@@ -1861,7 +1861,7 @@ i.e., it defines a fixed temperature as a boundary condition.
               fillPattern=1)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캟",
+            string="째F",
             style(color=0)),
           Text(extent=[-122, 163; 118, 103], string="%name"),
           Line(points=[-102, 0; 64, 0], style(color=42, thickness=2)),
@@ -1887,7 +1887,7 @@ as required to keep the temperature at the specified value.
           Line(points=[-102, 0; 64, 0], style(color=42, thickness=2)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캟",
+            string="째F",
             style(color=0)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
               color=42,
@@ -1922,7 +1922,7 @@ Example:
 
 </HTML>
 "));
-    model TemperatureSensor "Absolute temperature sensor in 캟ahrenheit" 
+    model TemperatureSensor "Absolute temperature sensor in 째Fahrenheit" 
       
       annotation(
         Diagram(
@@ -1942,7 +1942,7 @@ Example:
           Line(points=[-40, 60; -12, 60], style(color=0)),
           Text(
             extent=[102, -22; 60, -74],
-            string="캟",
+            string="째F",
             style(color=0))),
         Icon(
           Ellipse(extent=[-20, -98; 20, -60], style(
@@ -1961,7 +1961,7 @@ Example:
           Line(points=[-40, 60; -12, 60], style(color=0)),
           Text(
             extent=[126, -20; 26, -120],
-            string="캟",
+            string="째F",
             style(color=0)),
           Text(extent=[-132, 144; 108, 84], string="%name")),
         Documentation(info="<HTML>
@@ -1989,7 +1989,7 @@ sensor model.
     
     extends Modelica.Icons.Library;
     
-    model ToKelvin "Conversion block from 캲ankine to Kelvin" 
+    model ToKelvin "Conversion block from 째Rankine to Kelvin" 
       parameter Integer n=1 "Number of inputs (= number of outputs)";
       annotation(
         Diagram(
@@ -1999,7 +1999,7 @@ sensor model.
               fillColor=7)),
           Text(
             extent=[-40, -50; -99, -99],
-            string="캲k",
+            string="째Rk",
             style(color=0, thickness=4)),
           Text(
             extent=[100, -47; 44, -100],
@@ -2018,7 +2018,7 @@ sensor model.
             style(color=0)),
           Text(
             extent=[-31, -39; -111, -119],
-            string="캲k",
+            string="째Rk",
             style(color=0, thickness=4)),
           Line(points=[-41, 0; -100, 0]),
           Line(points=[100, 0; 40, 0]),
@@ -2038,7 +2038,7 @@ and provides them as output signals.
       Kelvin.signal = from_degRk(Rankine.signal);
     end ToKelvin;
     
-    model FromKelvin "Conversion from Kelvin to 캲ankine" 
+    model FromKelvin "Conversion from Kelvin to 째Rankine" 
       parameter Integer n=1 "Number of inputs (= number of outputs)";
       annotation(
         Icon(
@@ -2053,7 +2053,7 @@ and provides them as output signals.
             style(color=0, thickness=4)),
           Text(
             extent=[110, -39; 30, -119],
-            string="캲k",
+            string="째Rk",
             style(color=0)),
           Line(points=[-40, 0; -100, 0]),
           Line(points=[40, 0; 100, 0])),
@@ -2068,7 +2068,7 @@ and provides them as output signals.
             style(color=0, thickness=4)),
           Text(
             extent=[100, -40; 30, -100],
-            string="캲k",
+            string="째Rk",
             style(color=0)),
           Line(points=[-100, 0; -40, 0]),
           Line(points=[40, 0; 100, 0])),
@@ -2087,7 +2087,7 @@ and provides them as output signals.
       Rankine.signal = to_degRk(Kelvin.signal);
     end FromKelvin;
     
-    model FixedTemperature "Fixed temperature boundary condition in 캲ankine" 
+    model FixedTemperature "Fixed temperature boundary condition in 째Rankine" 
       
       parameter NonSI.Temperature_degRk T "Fixed Temperature at the port";
       annotation(
@@ -2100,7 +2100,7 @@ and provides them as output signals.
               fillPattern=8)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캲k",
+            string="째Rk",
             style(color=0)),
           Line(points=[-91, 0; 66, 0], style(color=42, thickness=2)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
@@ -2126,7 +2126,7 @@ This model defines a fixed temperature T at its port in degree Rankine,
           Line(points=[-42, 0; 66, 0], style(color=42, thickness=2)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캲k",
+            string="째Rk",
             style(color=0)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
               color=42,
@@ -2138,7 +2138,7 @@ This model defines a fixed temperature T at its port in degree Rankine,
     end FixedTemperature;
     
     model PrescribedTemperature 
-      "Variable temperature boundary condition in 캲ankine" 
+      "Variable temperature boundary condition in 째Rankine" 
       
       annotation(
         Icon(
@@ -2154,7 +2154,7 @@ This model defines a fixed temperature T at its port in degree Rankine,
               fillPattern=1)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캲k",
+            string="째Rk",
             style(color=0)),
           Text(extent=[-122, 163; 118, 103], string="%name"),
           Line(points=[-102, 0; 64, 0], style(color=42, thickness=2)),
@@ -2180,7 +2180,7 @@ as required to keep the temperature at the specified value.
           Line(points=[-102, 0; 64, 0], style(color=42, thickness=2)),
           Text(
             extent=[0, 0; -100, -100],
-            string="캲k",
+            string="째Rk",
             style(color=0)),
           Polygon(points=[62, -20; 62, 20; 100, 0; 62, -20], style(
               color=42,
@@ -2214,7 +2214,7 @@ Example:
 
 </HTML>
 "));
-    model TemperatureSensor "Absolute temperature sensor in 캲ankine" 
+    model TemperatureSensor "Absolute temperature sensor in 째Rankine" 
       
       annotation(
         Diagram(
@@ -2234,7 +2234,7 @@ Example:
           Line(points=[-40, 60; -12, 60], style(color=0)),
           Text(
             extent=[102, -22; 60, -74],
-            string="캲k",
+            string="째Rk",
             style(color=0))),
         Icon(
           Ellipse(extent=[-20, -98; 20, -60], style(
@@ -2253,7 +2253,7 @@ Example:
           Line(points=[-40, 60; -12, 60], style(color=0)),
           Text(
             extent=[126, -20; 26, -120],
-            string="캲k",
+            string="째Rk",
             style(color=0)),
           Text(extent=[-132, 144; 108, 84], string="%name")),
         Documentation(info="<HTML>
