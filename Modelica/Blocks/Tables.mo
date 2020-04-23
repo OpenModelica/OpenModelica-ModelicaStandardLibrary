@@ -58,7 +58,7 @@ package Tables
       input Integer icol;
       input Real u;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       output Real y;
       external"C" y = ModelicaStandardTables_CombiTable1D_getValue(tableID, icol, u)
         annotation (Library={"ModelicaStandardTables"});
@@ -72,7 +72,7 @@ package Tables
       input Integer icol;
       input Real u;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       output Real y;
       external"C" y = ModelicaStandardTables_CombiTable1D_getValue(tableID, icol, u)
         annotation (Library={"ModelicaStandardTables"});
@@ -85,7 +85,7 @@ package Tables
       input Integer icol;
       input Real u;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       input Real der_u;
       output Real der_y;
       external"C" der_y = ModelicaStandardTables_CombiTable1D_getDerValue(tableID, icol, u, der_u)
@@ -360,7 +360,7 @@ MATLAB is a registered trademark of The MathWorks, Inc.
       input Integer icol;
       input Real u;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       output Real y;
       external"C" y = ModelicaStandardTables_CombiTable1D_getValue(tableID, icol, u)
         annotation (Library={"ModelicaStandardTables"});
@@ -374,7 +374,7 @@ MATLAB is a registered trademark of The MathWorks, Inc.
       input Integer icol;
       input Real u;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       output Real y;
       external"C" y = ModelicaStandardTables_CombiTable1D_getValue(tableID, icol, u)
         annotation (Library={"ModelicaStandardTables"});
@@ -387,7 +387,7 @@ MATLAB is a registered trademark of The MathWorks, Inc.
       input Integer icol;
       input Real u;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       input Real der_u;
       output Real der_y;
       external"C" der_y = ModelicaStandardTables_CombiTable1D_getDerValue(tableID, icol, u, der_u)
@@ -657,7 +657,7 @@ MATLAB is a registered trademark of The MathWorks, Inc.
       input Real u1;
       input Real u2;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       output Real y;
       external"C" y = ModelicaStandardTables_CombiTable2D_getValue(tableID, u1, u2)
         annotation (Library={"ModelicaStandardTables"});
@@ -671,7 +671,7 @@ MATLAB is a registered trademark of The MathWorks, Inc.
       input Real u1;
       input Real u2;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       output Real y;
       external"C" y = ModelicaStandardTables_CombiTable2D_getValue(tableID, u1, u2)
         annotation (Library={"ModelicaStandardTables"});
@@ -684,7 +684,7 @@ MATLAB is a registered trademark of The MathWorks, Inc.
       input Real u1;
       input Real u2;
       input Real tableAvailable
-        "Dummy input to ensure correct sorting of function calls";
+        "Dummy input to ensure correct sorting of function calls" annotation(__OpenModelica_UnusedVariable=true);
       input Real der_u1;
       input Real der_u2;
       output Real der_y;

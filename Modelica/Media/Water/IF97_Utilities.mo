@@ -7159,7 +7159,7 @@ of Water and Steam. ASME Journal of Engineering for Gas Turbines and Power 122 (
        else region;
     aux.R := BaseIF97.data.RH2O;
     aux.p := p;
-    aux.T := T;
+    aux.T := T; /* OpenModelica patch */ aux.dpT := 0.0; aux.pt := 0.0; aux.pd := 0.0; aux.x := 0.0; aux.rho := 0.0; aux.vt := 0.0; aux.vp := 0.0; aux.cp := 0.0; /* end OpenModelica patch */
     if (aux.region == 1) then
       g := BaseIF97.Basic.g1(p, T);
       aux.h := aux.R*aux.T*g.tau*g.gtau;
