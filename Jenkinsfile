@@ -38,7 +38,9 @@ pipeline {
           git push github OM/$br
         done
 
+        git fetch origin
         git checkout OM/master
+        git reset --hard origin/OM/master
         ./update.sh
         '''
       }
