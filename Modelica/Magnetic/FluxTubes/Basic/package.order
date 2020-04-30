@@ -1,0 +1,12 @@
+Ground
+ElectroMagneticConverter
+ElectroMagneticConverterWithLeakageInductance
+ConstantReluctance
+ConstantPermeance
+VariableReluctance
+VariablePermeance
+LeakageWithCoefficient
+EddyCurrent
+Idle
+Short
+Crossing
