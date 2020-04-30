@@ -37,6 +37,9 @@ pipeline {
           git merge MA/$br
           git push github OM/$br
         done
+
+        git checkout OM/master
+        ./update.sh
         '''
       }
     }
