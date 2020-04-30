@@ -40,10 +40,13 @@ pipeline {
         done
 
         git fetch origin
-        git checkout OM/master
-        git reset --hard origin/OM/master
-        ./update.sh
-        git clean -fdx
+
+        for br in master maint/3.2.3; do
+          git checkout OM/$br
+          git reset --hard origin/OM/$br
+          ./update.sh
+          git clean -fdx
+        done
         '''
       }
     }
