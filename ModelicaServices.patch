@@ -1,0 +1,11 @@
+--- svn/MSL trunk/ModelicaServices/package.mo	2013-11-09 15:11:23.609016400 +0100
++++ build/ModelicaServices/package.mo	2013-11-09 15:50:14.308742738 +0100
+@@ -693,7 +693,7 @@
+     extends
+       Modelica.Utilities.Internal.PartialModelicaServices.ExternalReferences.PartialLoadResource;
+     algorithm
+-    fileReference := Modelica.Utilities.Files.fullPathName(uri);
++      fileReference:=OpenModelica.Scripting.uriToFilename(uri);
+ 
+     annotation (Documentation(info="<html>
+ <p>
