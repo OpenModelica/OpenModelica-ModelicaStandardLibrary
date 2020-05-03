@@ -2350,7 +2350,7 @@ more of the following changes.
 </html>"));
 end VersionManagement;
 
-class Version_4_0_0 "Version 4.0.0 (March 11, 2020)"
+class Version_4_0_0 "Version 4.0.0 (May 4, 2020)"
   extends Modelica.Icons.ReleaseNotes;
 
   annotation (Documentation(info="<html>
@@ -2360,7 +2360,7 @@ A tested conversion script is provided to transform models and libraries of prev
 Short Overview:
 </p>
 <ul>
-<li>About <a href=\"modelica://Modelica/Resources/Documentation/Version-4.0.0/ResolvedGitHubIssues.html\">603 issues (including pull requests)</a> have been addressed for this release.</li>
+<li>About <a href=\"modelica://Modelica/Resources/Documentation/Version-4.0.0/ResolvedGitHubIssues.html\">642 issues (including pull requests)</a> have been addressed for this release.</li>
 <li>This version is based on the recent Modelica language standard version 3.4.</li>
 <li>The library version (i.e., \"4.0.0\") follows semantic versioning using the convention <code>MAJOR.MINOR.BUGFIX</code>
 (see <a href=\"modelica://Modelica.UsersGuide.ReleaseNotes.VersionManagement\">Version Management</a> for details)
@@ -8179,7 +8179,7 @@ main version number is not changed.
 </p>
 
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
-<tr><td><a href=\"modelica://Modelica.UsersGuide.ReleaseNotes.Version_4_0_0\">Version 4.0.0</a></td><td>March 11, 2020</td></tr>
+<tr><td><a href=\"modelica://Modelica.UsersGuide.ReleaseNotes.Version_4_0_0\">Version 4.0.0</a></td><td>May 4, 2020</td></tr>
 <tr><td><a href=\"modelica://Modelica.UsersGuide.ReleaseNotes.Version_3_2_3\">Version 3.2.3</a></td><td>January 23, 2019</td></tr>
 <tr><td><a href=\"modelica://Modelica.UsersGuide.ReleaseNotes.Version_3_2_2\">Version 3.2.2</a></td><td>April 3, 2016</td></tr>
 <tr><td><a href=\"modelica://Modelica.UsersGuide.ReleaseNotes.Version_3_2_1\">Version 3.2.1</a></td><td>August 14, 2013</td></tr>
@@ -8773,8 +8773,8 @@ end UsersGuide;
 annotation (
 preferredView="info",
 version= "master",
-versionDate="2020-03-11",
-dateModified = "2020-03-11 19:00:00Z",
+versionDate="2020-05-04",
+dateModified = "2020-05-04 19:00:00Z",
 revisionId="$Format:%h %ci$",
 uses(Complex(version= "master"), ModelicaServices(version= "master")),
 conversion(
@@ -8832,7 +8832,7 @@ For an introduction, have especially a look at:
 This version of the Modelica Standard Library consists of
 </p>
 <ul>
-<li><strong>1416</strong> component models and blocks,</li>
+<li><strong>1417</strong> component models and blocks,</li>
 <li><strong>512</strong> example models, and</li>
 <li><strong>1219</strong> functions</li>
 </ul>
