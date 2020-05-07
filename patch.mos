@@ -28,6 +28,7 @@ getErrorString();
 
 print("Update version strings...\n");
 // Set version=master and all uses-annotations also=master
+/*
 for clStr in {"Modelica","ModelicaServices","Complex","ModelicaTest"} loop
   print("Start version="+clStr+"\n");
   writeFile(tmpScript, "cl := $TypeName("+clStr+");");
@@ -67,6 +68,7 @@ for clStr in {"Modelica","ModelicaServices","Complex","ModelicaTest"} loop
   writeFile(packageFile, fileStrPackage);getErrorString();
   print("Write version updates for: " + packageFile + "\n");
 end for;
+*/
 
 echo(false);
 servicesFile:=getSourceFile(ModelicaServices);
