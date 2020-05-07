@@ -15,5 +15,5 @@ patch --ignore-whitespace -p1 -f < ModelicaServices.patch
 docker run -w "$PWD" -v "$PWD:$PWD" openmodelica/openmodelica:v1.14.1-minimal omc patch.mos
 git config --global user.email "openmodelica@ida.liu.se"
 git config --global user.name "OpenModelica Jenkins"
-git commit -a -m "Update to $MASHA1"
+git commit -a --allow-empty -m "Update to $MASHA1"
 git push github OM/master
