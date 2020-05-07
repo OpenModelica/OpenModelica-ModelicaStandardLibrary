@@ -234,11 +234,11 @@ Specification (version &ge; 3.3).
 
   annotation (
     preferredView="info",
-    version= "master",
+    version="4.0.0",
     versionDate="2020-05-04",
     dateModified = "2020-05-04 19:00:00Z",
     revisionId="$Format:%h %ci$",
-    uses(Modelica(version= "master")),
+    uses(Modelica(version="4.0.0")),
     conversion(
       noneFromVersion="1.0",
       noneFromVersion="1.1",

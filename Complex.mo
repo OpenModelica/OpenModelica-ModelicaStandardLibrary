@@ -235,7 +235,7 @@ operator record Complex "Complex number with overloaded operators"
   end 'String';
 
 annotation (
-version= "master",
+version="4.0.0",
 versionDate="2020-05-04",
 dateModified = "2020-05-04 19:00:00Z",
 revisionId="$Format:%h %ci$",
