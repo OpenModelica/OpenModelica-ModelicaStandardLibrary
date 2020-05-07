@@ -1,7 +1,7 @@
 #!/bin/sh -xe
 
 MASHA1=`git rev-parse MA/master`
-if git log -l1 | grep -q "$MASHA1"; then
+if git log -n1 | grep -q "$MASHA1"; then
   exit 0
 fi
 
