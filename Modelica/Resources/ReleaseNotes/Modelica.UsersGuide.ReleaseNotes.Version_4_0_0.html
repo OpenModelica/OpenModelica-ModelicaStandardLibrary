@@ -17,7 +17,7 @@ transform models and libraries of previous versions 3.x.y to the
 new version. Short Overview:</p>
 <ul>
 <li>About <a href="../Documentation/Version-4.0.0/ResolvedGitHubIssues.html">
-643 issues (including 427 pull requests)</a> have been addressed
+647 issues (including 431 pull requests)</a> have been addressed
 for this release.</li>
 <li>This version is based on the recent Modelica language standard
 version 3.4.</li>
@@ -365,10 +365,29 @@ components</strong></font> have been <font color="blue"><strong>changed</strong>
 </tr>
 <tr>
 <td>Nonlinear.Limiter<br/>
-Nonlinear.VariableLimiter<br/>
-Continuous.LimPID</td>
+Nonlinear.VariableLimiter</td>
 <td>The superfluous parameter <code>limitsAtInit</code> has been
 removed.</td>
+</tr>
+<tr>
+<td>Continuous.PID</td>
+<td>The initialization option
+<code>initType</code> = <code>InitPID.DoNotUse_InitialIntegratorState</code>
+to only initialize the integrator state has been removed. This
+option has been converted to both initialize the integrator state
+and the derivative state, i.e.,
+<code>initType</code> = <code>Init.InitialState</code>.</td>
+</tr>
+<tr>
+<td>Continuous.LimPID</td>
+<td>The superfluous parameter <code>limitsAtInit</code> has been
+removed.<br/>
+The initialization option
+<code>initType</code> = <code>InitPID.DoNotUse_InitialIntegratorState</code>
+to only initialize the integrator state has been removed. This
+option has been converted to both initialize the integrator state
+and the derivative state, i.e.,
+<code>initType</code> = <code>Init.InitialState</code>.</td>
 </tr>
 <tr>
 <td>Nonlinear.DeadZone</td>
@@ -385,6 +404,14 @@ Noise.BandLimitedWhiteNoise</td>
 Modelica.Math.Random.Utilities.automaticLocalSeed the
 <code>localSeed</code> parameter is computed differently if
 <code>useAutomaticLocalSeed</code> is set to true.</td>
+</tr>
+<tr>
+<td>Types.InitPID</td>
+<td>The enumeration type has been converted to
+<code>Types.Init</code> with exception of the alternative
+<code>InitPID.DoNotUse_InitialIntegratorState</code>, that was
+converted to <code>Init.InitialState</code> leading to a different
+initialization behaviour.</td>
 </tr>
 <tr>
 <td colspan="2">
@@ -653,6 +680,6 @@ Windows OS. This has been corrected.</td>
 </tr>
 </table>
 <hr/>
-Generated at 2020-05-04T16:56:17Z by <a href="http://openmodelica.org">OpenModelica 1.16.0~dev-311-gd37a91d</a>
+Generated at 2020-05-15T16:16:44Z by <a href="http://openmodelica.org">OpenModelica 1.16.0~dev-371-geb234c0</a>
 </body>
 </html>
