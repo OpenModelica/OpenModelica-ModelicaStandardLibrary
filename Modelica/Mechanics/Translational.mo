@@ -1586,7 +1586,7 @@ to describe a coupling of the sliding mass with the housing via a spring/damper.
         Modelica.Mechanics.Translational.Interfaces.PartialCompliantWithRelativeStates;
       parameter Real c(final unit="N/m", final min=0, start=1)
         "Spring constant";
-      parameter Real d(final unit="N/ (m/s)", final min=0, start=1)
+      parameter Real d(final unit="N/(m/s)", final min=0, start=1)
         "Damping constant";
       parameter Modelica.SIunits.Position s_rel0=0 "Unstretched spring length";
       parameter Real n(final min=1) = 1
