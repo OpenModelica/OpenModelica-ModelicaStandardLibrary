@@ -35,6 +35,7 @@ pipeline {
 
         for br in maint/2.2.2 maint/3.1 maint/3.2.1 maint/3.2.2; do
           git checkout OM/$br
+          git reset --hard origin/OM/$br
           git merge MA/$br
           git push github OM/$br
         done
