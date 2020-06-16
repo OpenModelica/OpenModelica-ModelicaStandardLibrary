@@ -27,7 +27,7 @@ pipeline {
         sh 'git fetch MA-remote --no-tags'
         sh '''
         git clean -fdx
-        for br in master maint/2.2.1 maint/2.2.2 maint/3.0 maint/3.0.1 maint/3.1 maint/3.2 maint/3.2.1 maint/3.2.2  maint/3.2.3; do
+        for br in master maint/2.2.1 maint/2.2.2 maint/3.0 maint/3.0.1 maint/3.1 maint/3.2 maint/3.2.1 maint/3.2.2 maint/3.2.3 maint/4.0.x; do
           git checkout MA/$br
           git reset --hard MA-remote/$br
           git push github MA/$br
