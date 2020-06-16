@@ -199,5 +199,6 @@ Default machine parameters are used.</p>
                   fillColor={255,255,170},
                   fillPattern=FillPattern.Solid,
                   textStyle={TextStyle.Bold},
-                  textString="%m phase transient")}));
+                  textString="%m phase transient")}),
+  __OpenModelica_simulationFlags(nls = "newton"));
 end IMC_YD;

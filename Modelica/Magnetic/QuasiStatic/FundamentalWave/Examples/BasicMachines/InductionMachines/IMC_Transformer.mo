@@ -270,5 +270,6 @@ Simulate for 2.5 seconds and plot (versus time):</p>
                   fillColor={255,255,170},
                   fillPattern=FillPattern.Solid,
                   textStyle={TextStyle.Bold},
-          textString="%m phase transient")}));
+          textString="%m phase transient")}),
+  __OpenModelica_simulationFlags(nls = "newton"));
 end IMC_Transformer;

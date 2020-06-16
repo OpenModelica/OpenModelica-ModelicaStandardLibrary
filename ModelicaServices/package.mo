@@ -1,7 +1,7 @@
 within ;
-package ModelicaServices "ModelicaServices (Default implementation) - Models and functions used in the Modelica Standard Library requiring a tool specific implementation"
+package ModelicaServices "ModelicaServices (OpenModelica implementation) - Models and functions used in the Modelica Standard Library requiring a tool specific implementation"
   extends Modelica.Icons.Package;
-  constant String target="Default"
+  constant String target= "OpenModelica"
     "Target of this ModelicaServices implementation";
 
   package UsersGuide "User's Guide"
@@ -166,14 +166,15 @@ The interface of this model is defined at
       extends
         Modelica.Utilities.Internal.PartialModelicaServices.ExternalReferences.PartialLoadResource;
       algorithm
-      fileReference := Modelica.Utilities.Files.fullPathName(uri);
+      fileReference:=OpenModelica.Scripting.uriToFilename(uri);
 
-      annotation (Documentation(info="<html>
+      annotation (Documentation(info = "<html>
 <p>
 The interface of this model is documented at
 <a href=\"modelica://Modelica.Utilities.Files.loadResource\">Modelica.Utilities.Files.loadResource</a>.
 </p>
-</html>"));
+</html>"),
+        __OpenModelica_EarlyInline = true);
     end loadResource;
   end ExternalReferences;
 
@@ -184,7 +185,7 @@ The interface of this model is documented at
       "Smallest number such that small and -small are representable on the machine";
     final constant Real inf=1e60
       "Biggest Real number such that inf and -inf are representable on the machine";
-    final constant Integer Integer_inf=2147483647
+    final constant Integer Integer_inf=OpenModelica.Internal.Architecture.integerMax()
       "Biggest Integer number such that Integer_inf and -Integer_inf are representable on the machine";
     annotation (Documentation(info="<html>
 <p>
