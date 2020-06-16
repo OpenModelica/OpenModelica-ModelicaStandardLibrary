@@ -28,14 +28,13 @@ getErrorString();
 
 print("Update version strings...\n");
 // Set version=master and all uses-annotations also=master
-/*
 for clStr in {"Modelica","ModelicaServices","Complex","ModelicaTest"} loop
   print("Start version="+clStr+"\n");
   writeFile(tmpScript, "cl := $TypeName("+clStr+");");
   runScript(tmpScript);
   packageFile:=getSourceFile(cl);
   fileStrPackage:=readFile(packageFile);
-  if not addClassAnnotation(cl, annotate=version("master")) then
+  if not addClassAnnotation(cl, annotate=version("trunk")) then
     print("addClassAnnotation failed\n");
     print(getErrorString());
     exit(1);
@@ -49,7 +48,7 @@ for clStr in {"Modelica","ModelicaServices","Complex","ModelicaTest"} loop
     first := true;
     strAddClassAnnotation := "OpenModelica.Scripting.addClassAnnotation("+clStr+", $annotation(uses(";
     for x in usesArr loop
-      strAddClassAnnotation := strAddClassAnnotation + (if first then "" else ", ") + x + "(version=\"master\")";
+      strAddClassAnnotation := strAddClassAnnotation + (if first then "" else ", ") + x + "(version=\"trunk\")";
       first := false;
     end for;
     strAddClassAnnotation := strAddClassAnnotation + ")));";
@@ -68,7 +67,6 @@ for clStr in {"Modelica","ModelicaServices","Complex","ModelicaTest"} loop
   writeFile(packageFile, fileStrPackage);getErrorString();
   print("Write version updates for: " + packageFile + "\n");
 end for;
-*/
 
 echo(false);
 servicesFile:=getSourceFile(ModelicaServices);

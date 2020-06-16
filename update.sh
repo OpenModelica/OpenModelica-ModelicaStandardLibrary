@@ -16,4 +16,4 @@ docker run -w "$PWD" -v "$PWD:$PWD" openmodelica/openmodelica:v1.14.1-minimal om
 git config --global user.email "openmodelica@ida.liu.se"
 git config --global user.name "OpenModelica Jenkins"
 git commit -a --allow-empty -m "Update to $MASHA1"
-git push github OM/master
+git push github OM/trunk
