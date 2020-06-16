@@ -8924,11 +8924,11 @@ end UsersGuide;
 
 annotation (
 preferredView="info",
-version="4.0.0",
+version= "trunk",
 versionDate="2020-06-04",
 dateModified = "2020-06-04 11:00:00Z",
 revisionId="$Format:%h %ci$",
-uses(Complex(version="4.0.0"), ModelicaServices(version="4.0.0")),
+uses(Complex(version= "trunk"), ModelicaServices(version= "trunk")),
 conversion(
  from(version={"3.0", "3.0.1", "3.1", "3.2", "3.2.1", "3.2.2", "3.2.3"}, script="modelica://Modelica/Resources/Scripts/Conversion/ConvertModelica_from_3.2.3_to_4.0.0.mos")),
 Icon(coordinateSystem(extent={{-100.0,-100.0},{100.0,100.0}}), graphics={

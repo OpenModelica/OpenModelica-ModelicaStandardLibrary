@@ -234,11 +234,11 @@ Specification (version &ge; 3.3).
 
   annotation (
     preferredView="info",
-    version="4.0.0",
+    version= "trunk",
     versionDate="2020-06-04",
     dateModified = "2020-06-04 11:00:00Z",
     revisionId="$Format:%h %ci$",
-    uses(Modelica(version="4.0.0")),
+    uses(Modelica(version= "trunk")),
     conversion(
       noneFromVersion="1.0",
       noneFromVersion="1.1",
