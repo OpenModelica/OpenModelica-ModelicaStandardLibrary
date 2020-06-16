@@ -42,7 +42,7 @@ pipeline {
 
         git fetch origin
 
-        for br in master maint/3.2.3 maint/4.0.x; do
+        for br in master trunk maint/3.2.3 maint/4.0.x; do
           git checkout OM/$br
           git reset --hard origin/OM/$br
           ./update.sh
