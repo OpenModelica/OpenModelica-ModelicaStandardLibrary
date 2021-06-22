@@ -88,7 +88,7 @@ if err<>"" then
 end if;
 echo(true);
 writeFile(servicesFile, servicesFileStr);
-cmd := "sed -i 's/Include=\"#include \\\\\"ModelicaStandardTables.h\\\\\"\", //' Modelica/Blocks/Types.mo Modelica/Blocks/Tables.mo ObsoleteModelica4.mo";
+cmd := "sed -i 's/Include=\"#include \\\\\"\\(ModelicaStandardTables\\|ModelicaFFT\\|ModelicaRandom\\).h\\\\\"\", //' Modelica/Blocks/Types.mo Modelica/Blocks/Tables.mo ObsoleteModelica4.mo Modelica/Math/Random.mo Modelica/Math/FastFourierTransform.mo";
 if 0 <> system(cmd) then
   print(cmd + " failed");
   exit(1);
