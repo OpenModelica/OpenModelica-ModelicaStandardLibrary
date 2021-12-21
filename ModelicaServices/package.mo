@@ -217,7 +217,6 @@ Specification (version &ge; 3.3).
     versionDate="2019-01-23",
     dateModified="2020-06-04 11:00:00Z",
     revisionId="$Format:%h %ci$",
-    uses(Modelica(version="3.2.3")),
     conversion(
       noneFromVersion="1.0",
       noneFromVersion="1.1",
