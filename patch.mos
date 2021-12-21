@@ -93,7 +93,7 @@ if 0 <> system(cmd) then
   print(cmd + " failed");
   exit(1);
 end if;
-cmd := "sed '/^ *uses[(]Modelica[(]version=\"[^\"]*\"[)][)], *$/d' ModelicaServices/package.mo";
+cmd := "sed -i '/^ *uses[(]Modelica[(]version=\"[^\"]*\"[)][)], *$/d' ModelicaServices/package.mo";
 if 0 <> system(cmd) then
   print(cmd + " failed");
   exit(1);
