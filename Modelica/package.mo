@@ -1300,6 +1300,49 @@ be defined like:
       tab=\"Controller\",
       group=\"Speed control\"));
 </pre></blockquote>
+
+<h4>Whitespace and Indentation</h4>
+<p>
+Trailing white-space (i.e., white-space at the end of the lines) shall not be used.
+The tab-character shall not be used, since the tab-stops are not standardized.
+</p>
+<p>
+The code in a&nbsp;class shall be indented relative to the class in steps of two spaces;
+except that the headings <code>public</code>, <code>protected</code>, <code>equation</code>,
+<code>algorithm</code>, and <code>end</code> of class marker shall not be indented.
+The keywords <code>public</code> and <code>protected</code> are headings for a&nbsp;group
+of declarations.
+</p>
+<p>
+Long modifier lists shall be split into several indented lines with at most one modifier per line.
+</p>
+<p>
+Full class definitions shall be separated by an empty line.
+</p>
+
+<h5>Example</h5>
+
+<blockquote><pre>
+<strong>package</strong> MyPackage
+  <strong>partial</strong> <strong>model</strong> BaseModel
+    <strong>parameter</strong> Real p;
+    <strong>input</strong> Real u(unit=\"m/s\");
+  <strong>protected</strong>
+    Real y;
+    Real x(
+      start=1,
+      unit=\"m\",
+      nominal=10);
+  <strong>equation</strong>
+    <strong>der</strong>(x) = u;
+    y = 2*x;
+  <strong>end</strong> BaseModel;
+
+  <strong>model</strong> ModelP2
+    <strong>extends</strong> BaseModel(p=2);
+  <strong>end</strong> ModelP2;
+<strong>end</strong> MyPackage;
+</pre></blockquote>
 </html>"));
        end Format;
 
