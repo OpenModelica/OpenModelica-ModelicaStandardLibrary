@@ -2149,6 +2149,7 @@ package Examples
   model SimpleLiquidWater "Example for Water.SimpleLiquidWater medium model"
     extends Modelica.Icons.Example;
 
+    constant SI.PressureRate pressureRate = 1e5/10;
     parameter SI.Volume V=1 "Volume";
     parameter SI.EnthalpyFlowRate H_flow_ext=1.e6
       "Constant enthalpy flow rate into the volume";
@@ -2182,7 +2183,7 @@ package Examples
     der(U) = H_flow_ext;
 
     // Smooth state
-    medium2.p = 1e5*time/10;
+    medium2.p = pressureRate*time;
     medium2.T = 330;
     m_flow_ext2 = time - 30;
     state = Medium.setSmoothState(
@@ -2217,12 +2218,21 @@ package Examples
     Real m_flow_ext;
     Real der_p;
     Real der_T;
+  protected
+    parameter SI.AbsolutePressure p01 = 100000.0 "state.p at time 0";
+    parameter Real pRate1(unit = "Pa/s") = 0 "state.p rate of change";
+    parameter SI.Temperature T01 = 200 "state.T at time 0";
+    parameter SI.TemperatureSlope Trate1 = 1000 "state.T rate of change";
+    parameter SI.AbsolutePressure p02 = 2.0e5 "state2.p at time 0";
+    parameter Real pRate2(unit = "Pa/s") = 0 "state2.p rate of change";
+    parameter SI.Temperature T02 = 500 "state2.T at time 0";
+    parameter SI.TemperatureSlope Trate2 = 0 "state2.T rate of change";
 
   equation
-    state.p = 100000.0;
-    state.T = 200 + 1000*time;
-    state2.p = 2.0e5;
-    state2.T = 500.0;
+    state.p = p01 + pRate1*time;
+    state.T = T01 + Trate1*time;
+    state2.p = p02 + pRate2*time;
+    state2.T = T02 + Trate2*time;
     //  s2 = s;
 
     // Smooth state
@@ -2397,6 +2407,14 @@ is given to compare the approximation.
     Real der_T;
   protected
     constant SI.Time unitTime=1;
+    parameter SI.AbsolutePressure p01 = 1.e5 "state1.p at time 0";
+    parameter Real pRate1(unit = "Pa/s") = 1.e5 "state1.p rate of change";
+    parameter SI.Temperature T01 = 300 "state1.T at time 0";
+    parameter SI.TemperatureSlope Trate1 = 10 "state1.T rate of change";
+    parameter SI.AbsolutePressure p02 = 1.e5 "state2.p at time 0";
+    parameter Real pRate2(unit = "Pa/s") = 1.e5/2 "state2.p rate of change";
+    parameter SI.Temperature T02 = 340 "state2.T at time 0";
+    parameter SI.TemperatureSlope Trate2 = -20 "state2.T rate of change";
   equation
     der(medium.p) = 0.0;
     der(medium.T) = 90;
@@ -2406,12 +2424,12 @@ is given to compare the approximation.
     //  medium.X_liquidWater = if medium.X_sat < medium.X[2] then medium.X[2] - medium.X_sat else 0.0;
 
     // Smooth state
-    m_flow_ext = time - 0.5;
-    state1.p = 1.e5*(1 + time);
-    state1.T = 300 + 10*time;
+    m_flow_ext = time/unitTime - 0.5;
+    state1.p = p01 + pRate1*time;
+    state1.T = T01 + Trate1*time;
     state1.X = {time,1 - time}/unitTime;
-    state2.p = 1.e5*(1 + time/2);
-    state2.T = 340 - 20*time;
+    state2.p = p02 + pRate2*time;
+    state2.T = T02 + Trate2*time;
     state2.X = {0.5*time,1 - 0.5*time}/unitTime;
     smoothState = Medium.setSmoothState(
           m_flow_ext,
@@ -2698,16 +2716,24 @@ points, e.g., when an isentropic reference state is computed.
       Real der_T;
     protected
       constant SI.Time unitTime=1;
+      parameter SI.AbsolutePressure p01 = 1.e5 "state1.p at time 0";
+      parameter Real pRate1(unit = "Pa/s") = 1.e5 "state1.p rate of change";
+      parameter SI.Temperature T01 = 300 "state1.T at time 0";
+      parameter SI.TemperatureSlope Trate1 = 10 "state1.T rate of change";
+      parameter SI.AbsolutePressure p02 = 1.e5 "state2.p at time 0";
+      parameter Real pRate2(unit = "Pa/s") = 1.e5/2 "state2.p rate of change";
+      parameter SI.Temperature T02 = 340 "state2.T at time 0";
+      parameter SI.TemperatureSlope Trate2 = -20 "state2.T rate of change";
     equation
       der(medium.p) = 0.0;
       der(medium.T) = 90;
       medium.X[Medium.Air] = 0.95;
       m_flow_ext = time - 0.5;
-      state1.p = 1.e5*(1 + time);
-      state1.T = 300 + 10*time;
+      state1.p = p01 + pRate1*time;
+      state1.T = T01 + Trate1*time;
       state1.X = {time,1 - time}/unitTime;
-      state2.p = 1.e5*(1 + time/2);
-      state2.T = 340 - 20*time;
+      state2.p = p02 + pRate2*time;
+      state2.T = T02 + Trate2*time;
       state2.X = {0.5*time,1 - 0.5*time}/unitTime;
       smoothState = Medium.setSmoothState(
               m_flow_ext,
