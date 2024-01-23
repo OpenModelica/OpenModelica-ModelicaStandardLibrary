@@ -234,8 +234,8 @@ Specification (version &ge; 3.3).
   annotation (
     preferredView="info",
     version= "trunk",
-    versionDate="2020-06-04",
-    dateModified = "2020-06-04 11:00:00Z",
+    versionDate="2024-01-12",
+    dateModified = "2024-01-12 19:40:00Z",
     revisionId="$Format:%h %ci$",
     uses(Modelica(version= "trunk")),
     conversion(
@@ -244,7 +244,8 @@ Specification (version &ge; 3.3).
       noneFromVersion="1.2",
       noneFromVersion="3.2.1",
       noneFromVersion="3.2.2",
-      noneFromVersion="3.2.3"),
+      noneFromVersion="3.2.3",
+      noneFromVersion="4.0.0"),
     Documentation(info="<html>
 <p>
 This package contains a set of functions and models to be used in the
@@ -294,7 +295,7 @@ This ModelicaServices package provides only \"dummy\" models that do nothing.
 
 <p>
 <strong>Licensed by the Modelica Association under the 3-Clause BSD License</strong><br>
-Copyright &copy; 2009-2020, Modelica Association and contributors
+Copyright &copy; 2009-2024, Modelica Association and contributors
 </p>
 
 <p>
