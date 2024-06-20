@@ -6,6 +6,7 @@ The following versions of the Modelica Standard Library are currently being supp
 
 | Version       | Supported          |
 | ------------- | ------------------ |
+| 4.1.x         | :white_check_mark: |
 | 4.0.x         | :white_check_mark: |
 | 3.2.3+build.x | :white_check_mark: |
 | ≤ 3.2.2       | :x:                |

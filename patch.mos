@@ -1,0 +1,100 @@
+tmpScript:="Modelica.tmp.mos";
+
+for pack in {"Complex","Modelica","ModelicaServices","ModelicaTest"} loop
+  suffix := if pack=="Complex" then ".mo" else "/package.mo";
+  if not loadFile(pack+suffix) then
+  print("Failed to load "+pack+"\n");
+    print(getErrorString());
+    exit(1);
+  end if;
+end for;
+getErrorString();
+
+fundamentalWaveFile1 := getSourceFile(Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines.IMC_YD);
+fileStrFundamentalWave1 := readFile(fundamentalWaveFile1);
+fundamentalWaveFile2 := getSourceFile(Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines.IMC_Transformer);
+fileStrFundamentalWave2 := readFile(fundamentalWaveFile2);
+addClassAnnotation(Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines.IMC_YD, __OpenModelica_simulationFlags(nls = "newton"));
+addClassAnnotation(Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines.IMC_Transformer, __OpenModelica_simulationFlags(nls = "newton"));
+listing1 := listFile(Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines.IMC_YD);
+fileStrFundamentalWave1 := diffModelicaFileListings(fileStrFundamentalWave1, listing1, OpenModelica.Scripting.DiffFormat.plain);
+writeFile(fundamentalWaveFile1, fileStrFundamentalWave1);getErrorString();
+listing2 := listFile(Modelica.Magnetic.QuasiStatic.FundamentalWave.Examples.BasicMachines.InductionMachines.IMC_Transformer);
+fileStrFundamentalWave2 := diffModelicaFileListings(fileStrFundamentalWave2, listing2, OpenModelica.Scripting.DiffFormat.plain);
+writeFile(fundamentalWaveFile2, fileStrFundamentalWave2);getErrorString();
+
+echo(false);mathFile:=getSourceFile(Modelica.Math);mathFileStr:=readFile(mathFile);echo(true);
+getErrorString();
+
+print("Update version strings...\n");
+// Set version=master and all uses-annotations also=master
+/*
+for clStr in {"Modelica","ModelicaServices","Complex","ModelicaTest"} loop
+  print("Start version="+clStr+"\n");
+  writeFile(tmpScript, "cl := $TypeName("+clStr+");");
+  runScript(tmpScript);
+  packageFile:=getSourceFile(cl);
+  fileStrPackage:=readFile(packageFile);
+  if not addClassAnnotation(cl, annotate=version("master")) then
+    print("addClassAnnotation failed\n");
+    print(getErrorString());
+    exit(1);
+  end if;
+  listing := listFile(cl);
+  fileStrPackage := diffModelicaFileListings(fileStrPackage, listing, OpenModelica.Scripting.DiffFormat.plain);
+  usesMat := getUses(cl);
+
+  if size(usesMat,1)>0 then
+    usesArr := usesMat[:,1];
+    first := true;
+    strAddClassAnnotation := "OpenModelica.Scripting.addClassAnnotation("+clStr+", $annotation(uses(";
+    for x in usesArr loop
+      strAddClassAnnotation := strAddClassAnnotation + (if first then "" else ", ") + x + "(version=\"master\")";
+      first := false;
+    end for;
+    strAddClassAnnotation := strAddClassAnnotation + ")));";
+  end if;
+  writeFile(tmpScript, strAddClassAnnotation);
+  res:=runScript(tmpScript);
+  if "true\n"<>res then
+    print("Failed to run script: " + strAddClassAnnotation + "\n");
+    print("Got result: "+res);
+    exit(1);
+  end if;
+
+  listing := listFile(cl);
+  fileStrPackage := diffModelicaFileListings(fileStrPackage, listing, OpenModelica.Scripting.DiffFormat.plain);
+
+  writeFile(packageFile, fileStrPackage);getErrorString();
+  print("Write version updates for: " + packageFile + "\n");
+end for;
+*/
+
+echo(false);
+servicesFile:=getSourceFile(ModelicaServices);
+servicesFileStr:=readFile(servicesFile);
+setClassComment(ModelicaServices, "ModelicaServices (OpenModelica implementation) - Models and functions used in the Modelica Standard Library requiring a tool specific implementation");
+servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaServices), OpenModelica.Scripting.DiffFormat.plain);
+setComponentModifierValue(ModelicaServices, target, $Code(="OpenModelica"));
+servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaServices), OpenModelica.Scripting.DiffFormat.plain);
+setComponentModifierValue(ModelicaServices.Machine, Integer_inf, $Code(=OpenModelica.Internal.Architecture.integerMax()));
+servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaServices), OpenModelica.Scripting.DiffFormat.plain);
+addClassAnnotation(ModelicaServices.ExternalReferences.loadResource, annotate=__OpenModelica_EarlyInline(true));
+servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaServices), OpenModelica.Scripting.DiffFormat.plain);
+err := getErrorString();
+if err<>"" then
+  print(err);
+  exit(1);
+end if;
+echo(true);
+writeFile(servicesFile, servicesFileStr);
+cmd := "sed -i 's/Include=\"#include \\\\\"\\(ModelicaStandardTables\\|ModelicaFFT\\|ModelicaRandom\\).h\\\\\"\", //' Modelica/Blocks/Types.mo Modelica/Blocks/Tables.mo ObsoleteModelica4.mo Modelica/Math/Random.mo Modelica/Math/FastFourierTransform.mo";
+if 0 <> system(cmd) then
+  print(cmd + " failed");
+  exit(1);
+end if;
+cmd := "sed -i '/^ *uses[(]Modelica[(]version=\"[^\"]*\"[)][)], *$/d' ModelicaServices/package.mo";
+if 0 <> system(cmd) then
+  print(cmd + " failed");
+  exit(1);
+end if;
