@@ -28,7 +28,7 @@ pipeline {
         sh '''
         export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
         git clean -fdx
-        for br in master maint/2.2.1 maint/2.2.2 maint/3.0 maint/3.0.1 maint/3.1 maint/3.2 maint/3.2.1 maint/3.2.2 maint/3.2.3 maint/4.0.x; do
+        for br in master maint/2.2.1 maint/2.2.2 maint/3.0 maint/3.0.1 maint/3.1 maint/3.2 maint/3.2.1 maint/3.2.2 maint/3.2.3 maint/4.0.x maint/4.1.x; do
           git checkout MA/$br
           git reset --hard MA-remote/$br
           git push github MA/$br
@@ -43,7 +43,7 @@ pipeline {
 
         git fetch origin
 
-        for br in master trunk maint/3.2.3 maint/4.0.x; do
+        for br in master trunk maint/3.2.3 maint/4.0.x maint/4.1.x; do
           git checkout OM/$br
           git reset --hard origin/OM/$br
           ./update.sh
