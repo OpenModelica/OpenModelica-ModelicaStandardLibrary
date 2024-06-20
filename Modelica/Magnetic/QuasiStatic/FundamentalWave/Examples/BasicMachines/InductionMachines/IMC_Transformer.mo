@@ -268,5 +268,6 @@ Simulate for 2.5 seconds and plot (versus time):</p>
                                             Text(
                   extent={{80,-92},{160,-100}},
                   textStyle={TextStyle.Bold},
-          textString="%m phase transient")}));
+          textString="%m phase transient")}),
+  __OpenModelica_simulationFlags(nls = "newton"));
 end IMC_Transformer;

@@ -197,5 +197,6 @@ Default machine parameters are used.</p>
           textString="%m phase quasi-static"), Text(
                   extent={{-60,-80},{20,-88}},
                   textStyle={TextStyle.Bold},
-                  textString="%m phase transient")}));
+                  textString="%m phase transient")}),
+  __OpenModelica_simulationFlags(nls = "newton"));
 end IMC_YD;

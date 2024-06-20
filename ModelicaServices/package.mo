@@ -1,7 +1,7 @@
 within ;
-package ModelicaServices "ModelicaServices (Default implementation) - Models and functions used in the Modelica Standard Library requiring a tool specific implementation"
+package ModelicaServices "ModelicaServices (OpenModelica implementation) - Models and functions used in the Modelica Standard Library requiring a tool specific implementation"
   extends Modelica.Icons.Package;
-  constant String target="Default"
+  constant String target= "OpenModelica"
     "Target of this ModelicaServices implementation";
 
   package UsersGuide "User's Guide"
@@ -165,14 +165,15 @@ The interface of this model is defined at
       extends
         Modelica.Utilities.Internal.PartialModelicaServices.ExternalReferences.PartialLoadResource;
     algorithm
-      fileReference := Modelica.Utilities.Files.fullPathName(uri);
+      fileReference:=OpenModelica.Scripting.uriToFilename(uri);
 
-      annotation (Documentation(info="<html>
+      annotation (Documentation(info = "<html>
 <p>
 The interface of this model is documented at
 <a href=\"modelica://Modelica.Utilities.Files.loadResource\">Modelica.Utilities.Files.loadResource</a>.
 </p>
-</html>"));
+</html>"),
+        __OpenModelica_EarlyInline = true);
     end loadResource;
   end ExternalReferences;
 
@@ -183,7 +184,7 @@ The interface of this model is documented at
       "Minimum normalized positive floating-point number";
     final constant Real inf=1.7976931348623157E+308
       "Maximum representable finite floating-point number";
-    final constant Integer Integer_inf=2147483647
+    final constant Integer Integer_inf=OpenModelica.Internal.Architecture.integerMax()
       "Biggest Integer number such that Integer_inf and -Integer_inf are representable on the machine";
     annotation (Documentation(info="<html>
 <p>
@@ -236,7 +237,6 @@ Specification (version &ge; 3.3).
     versionDate="2024-01-12",
     dateModified = "2024-01-12 19:40:00Z",
     revisionId="$Format:%h %ci$",
-    uses(Modelica(version="4.1.0")),
     conversion(
       noneFromVersion="1.0",
       noneFromVersion="1.1",
