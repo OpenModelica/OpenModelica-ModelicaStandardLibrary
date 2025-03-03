@@ -76,6 +76,8 @@ servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaSe
 setComponentModifierValue(ModelicaServices, target, $Code(="OpenModelica"));
 servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaServices), OpenModelica.Scripting.DiffFormat.plain);
 setComponentModifierValue(ModelicaServices.Machine, Integer_inf, $Code(=OpenModelica.Internal.Architecture.integerMax()));
+// set the inf to 1e60 as the 1.7976931348623157E+308 is causing issues
+setComponentModifierValue(ModelicaServices.Machine, inf, $Code(=1e60));
 servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaServices), OpenModelica.Scripting.DiffFormat.plain);
 addClassAnnotation(ModelicaServices.ExternalReferences.loadResource, annotate=__OpenModelica_EarlyInline(true));
 servicesFileStr := diffModelicaFileListings(servicesFileStr, listFile(ModelicaServices), OpenModelica.Scripting.DiffFormat.plain);
