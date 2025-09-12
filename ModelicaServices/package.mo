@@ -233,9 +233,9 @@ Specification (version &ge; 3.3).
 
   annotation (
     preferredView="info",
-    version="4.1.0",
-    versionDate="2024-01-12",
-    dateModified = "2024-01-12 19:40:00Z",
+    version="4.2.0 dev",
+    versionDate="20xx-xx-xx",
+    dateModified = "2025-05-23 15:00:00Z",
     revisionId="$Format:%h %ci$",
     conversion(
       noneFromVersion="1.0",
@@ -244,7 +244,8 @@ Specification (version &ge; 3.3).
       noneFromVersion="3.2.1",
       noneFromVersion="3.2.2",
       noneFromVersion="3.2.3",
-      noneFromVersion="4.0.0"),
+      noneFromVersion="4.0.0",
+      noneFromVersion="4.1.0"),
     Documentation(info="<html>
 <p>
 This package contains a set of functions and models to be used in the
