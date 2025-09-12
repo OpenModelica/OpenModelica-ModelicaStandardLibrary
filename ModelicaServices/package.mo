@@ -234,8 +234,8 @@ Specification (version &ge; 3.3).
   annotation (
     preferredView="info",
     version= "trunk",
-    versionDate="2024-01-12",
-    dateModified = "2024-01-12 19:40:00Z",
+    versionDate="20xx-xx-xx",
+    dateModified = "2025-05-23 15:00:00Z",
     revisionId="$Format:%h %ci$",
     uses(Modelica(version= "trunk")),
     conversion(
@@ -245,7 +245,8 @@ Specification (version &ge; 3.3).
       noneFromVersion="3.2.1",
       noneFromVersion="3.2.2",
       noneFromVersion="3.2.3",
-      noneFromVersion="4.0.0"),
+      noneFromVersion="4.0.0",
+      noneFromVersion="4.1.0"),
     Documentation(info="<html>
 <p>
 This package contains a set of functions and models to be used in the
