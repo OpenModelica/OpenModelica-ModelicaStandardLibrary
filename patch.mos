@@ -26,6 +26,14 @@ writeFile(fundamentalWaveFile2, fileStrFundamentalWave2);getErrorString();
 echo(false);mathFile:=getSourceFile(Modelica.Math);mathFileStr:=readFile(mathFile);echo(true);
 getErrorString();
 
+// Add annotation(Evaluate=true) to initAngle in Modelica.Mechanics.MultiBody.Joints.FreeMotionScalarInit.
+initAngleFile := getSourceFile(Modelica.Mechanics.MultiBody.Joints.FreeMotionScalarInit);
+initAngleFileStr := readFile(initAngleFile);
+setElementAnnotation(Modelica.Mechanics.MultiBody.Joints.FreeMotionScalarInit.initAngle, $Code((Placement(transformation(extent={{-60,-10},{-40,10}})), Evaluate=true)));
+initAngleListing := listFile(Modelica.Mechanics.MultiBody.Joints.FreeMotionScalarInit);
+initAngleFileStr := diffModelicaFileListings(initAngleFileStr, initAngleListing, OpenModelica.Scripting.DiffFormat.plain);
+writeFile(initAngleFile, initAngleFileStr); getErrorString();
+
 print("Update version strings...\n");
 // Set version=master and all uses-annotations also=master
 /*
