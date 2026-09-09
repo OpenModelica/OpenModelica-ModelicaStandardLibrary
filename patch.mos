@@ -22,6 +22,7 @@ echo(false);mathFile:=getSourceFile(Modelica.Math);mathFileStr:=readFile(mathFil
 getErrorString();
 
 // Add annotation(Evaluate=true) to initAngle in Modelica.Mechanics.MultiBody.Joints.FreeMotionScalarInit.
+// https://github.com/modelica/ModelicaStandardLibrary/issues/4809
 initAngleFile := getSourceFile(Modelica.Mechanics.MultiBody.Joints);
 initAngleFileStr := readFile(initAngleFile);
 setElementAnnotation(Modelica.Mechanics.MultiBody.Joints.FreeMotionScalarInit.initAngle, $Code((Placement(transformation(extent={{-60,-10},{-40,10}})), Evaluate=true)));
